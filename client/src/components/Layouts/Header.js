@@ -1,6 +1,26 @@
-import React from 'react'
+import { message } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+
+    const navigate = useNavigate();
+    const [loginUser, setLoginUser] = useState('')
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'))
+        if (user) {
+            setLoginUser(user)
+        }
+    }, [])
+
+    const logoutHandler = () => {
+        localStorage.removeItem('user')
+        navigate('/login')
+        message.success("Logout Successfull")
+    }
+
+
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -12,7 +32,14 @@ const Header = () => {
                         <a className="navbar-brand" >Expense Management</a>
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page">Home</a>
+                                <p className="nav-link active">
+                                    {loginUser && loginUser.name}</p>
+                            </li>
+                            <li className="nav-item">
+                                <button className="btn btn-primary"
+                                    aria-current="page" onClick={logoutHandler}>
+                                    Logout
+                                </button>
                             </li>
                         </ul>
                     </div>
