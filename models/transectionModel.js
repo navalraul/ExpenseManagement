@@ -28,3 +28,5 @@ const transectionSchema = new mongoose.Schema({
 },{timestamps:true})
 
 const transectionModel = mongoose.model('transections', transectionSchema)
+
+module.exports = transectionModel;
