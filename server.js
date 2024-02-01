@@ -18,7 +18,7 @@ app.use(cors())
 
 app.use('/api/v1/users', require('./routes/userRoute'))
 
-const PORT = 8000 || process.env.PORT
+const PORT = 8080 || process.env.PORT
 
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
