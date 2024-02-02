@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import Layout from '../components/Layouts/Layout'
-import { Form,Input, Modal, Select, message } from 'antd';
-import axios from 'axios'
+import React, { useState } from 'react';
+import Layout from "./../components/Layouts/Layout"
+import { Form, Input, Modal, Select, message } from 'antd';
+import axios from 'axios';
 import Spinner from '../components/Spinner';
 
 const HomePage = () => {
@@ -9,15 +9,15 @@ const HomePage = () => {
   const [showmodal, setShowModal] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = async (value) => {
-    try{
+  const handleSubmit = async (values) => {
+    try {
       const user = JSON.parse(localStorage.getItem('user'))
       setLoading(true)
-      await axios.post('/transections/add-transection', {...value, userid: user._id})
+      await axios.post('/transections/add-transection', { ...values, userid: user._id })
       setLoading(false)
       message.success('Transection successfull')
       setShowModal(false)
-    }catch(error) {
+    } catch (error) {
       setLoading(false)
       message.error('Failed to Add')
     }
@@ -68,7 +68,7 @@ const HomePage = () => {
             <Input type='text' />
           </Form.Item>
           <div className='d-flex justify-content-end'>
-            <button className='btn btn-primary'>Add </button>
+            <button type='submit' className='btn btn-primary'>Add </button>
           </div>
         </Form>
       </Modal>
