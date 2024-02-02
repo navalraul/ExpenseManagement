@@ -17,9 +17,8 @@ const Login = () => {
             const {data} = await axios.post("/users/login", values)
             setLoading(false);
             message.success('Login Successfull')
-            localStorage.setItem("user", JSON.stringify({ ...data.user, password:""}))
+            localStorage.setItem("user", JSON.stringify({ ...data.user, password:""}));
             navigate('/')
-            console.log(data)
         } catch (error) {
             setLoading(false)
             message.error("Something went wrong")
@@ -56,4 +55,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;

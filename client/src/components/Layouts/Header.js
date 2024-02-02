@@ -16,8 +16,8 @@ const Header = () => {
 
     const logoutHandler = () => {
         localStorage.removeItem('user')
-        navigate('/login')
         message.success("Logout Successfull")
+        navigate('/login')
     }
 
 
