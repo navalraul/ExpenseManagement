@@ -19,7 +19,7 @@ const Register = () => {
             navigate('/login')
         }catch(error){
             setLoading(false)
-            message.error('something went wrong')
+            message.error('Something')
         }
     }
 
